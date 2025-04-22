@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="20" alignment="CENTER" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.fxproject.controller.PetFormController"
+      stylesheets="@styles/main.css">
+    
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <VBox styleClass="form-container">
+        <Label text="Pet Management" styleClass="title-label"/>
+
+        <GridPane hgap="15" vgap="15">
+            <columnConstraints>
+                <ColumnConstraints hgrow="NEVER" minWidth="120"/>
+                <ColumnConstraints hgrow="ALWAYS" minWidth="250"/>
+            </columnConstraints>
+
+            <Label text="Name:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+            <TextField fx:id="nameField" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+            <Label text="Species:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+            <TextField fx:id="speciesField" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+            <Label text="Breed:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+            <TextField fx:id="breedField" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+            <Label text="Birth Date:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+            <DatePicker fx:id="birthDatePicker" GridPane.columnIndex="1" GridPane.rowIndex="3" maxWidth="Infinity"/>
+
+            <Label text="Owner:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+            <ComboBox fx:id="ownerComboBox" GridPane.columnIndex="1" GridPane.rowIndex="4" maxWidth="Infinity"/>
+        </GridPane>
+
+        <HBox styleClass="button-container" alignment="CENTER">
+            <Button text="Save" onAction="#handleSave"/>
+            <Button text="Edit" onAction="#handleEdit" fx:id="editButton" disable="true" styleClass="secondary"/>
+            <Button text="Delete" onAction="#handleDelete" fx:id="deleteButton" disable="true" styleClass="danger"/>
+            <Button text="Clear" onAction="#clearFields" styleClass="secondary"/>
+        </HBox>
+    </VBox>
+
+    <VBox styleClass="form-container">
+        <TableView fx:id="petTable" VBox.vgrow="ALWAYS" onMouseClicked="#handleTableClick">
+            <columns>
+                <TableColumn fx:id="nameColumn" text="Name"/>
+                <TableColumn fx:id="speciesColumn" text="Species"/>
+                <TableColumn fx:id="breedColumn" text="Breed"/>
+                <TableColumn fx:id="birthDateColumn" text="Birth Date"/>
+                <TableColumn fx:id="ownerColumn" text="Owner"/>
+            </columns>
+        </TableView>
+    </VBox>
+</VBox> 
