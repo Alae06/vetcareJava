@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="20" alignment="CENTER" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.fxproject.controller.OwnerFormController"
+      stylesheets="@styles/main.css">
+    
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <VBox styleClass="form-container">
+        <Label text="Owner Management" styleClass="title-label"/>
+
+        <GridPane hgap="15" vgap="15">
+            <columnConstraints>
+                <ColumnConstraints hgrow="NEVER" minWidth="120"/>
+                <ColumnConstraints hgrow="ALWAYS" minWidth="250"/>
+            </columnConstraints>
+
+            <Label text="First Name:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+            <TextField fx:id="firstNameField" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+            <Label text="Last Name:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+            <TextField fx:id="lastNameField" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+            <Label text="Address:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+            <TextField fx:id="addressField" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+            <Label text="Phone:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+            <TextField fx:id="phoneField" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+            <Label text="Email:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+            <TextField fx:id="emailField" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+        </GridPane>
+
+        <HBox styleClass="button-container" alignment="CENTER">
+            <Button text="Save" onAction="#handleSave"/>
+            <Button text="Edit" onAction="#handleEdit" fx:id="editButton" disable="true" styleClass="secondary"/>
+            <Button text="Delete" onAction="#handleDelete" fx:id="deleteButton" disable="true" styleClass="danger"/>
+            <Button text="Clear" onAction="#clearFields" styleClass="secondary"/>
+        </HBox>
+    </VBox>
+
+    <VBox styleClass="form-container">
+        <HBox styleClass="search-container" alignment="CENTER_LEFT">
+            <Label text="Search by Last Name:"/>
+            <TextField fx:id="searchField" promptText="Enter last name" HBox.hgrow="ALWAYS"/>
+            <Button text="Search" onAction="#handleSearch"/>
+            <Button text="Clear Search" onAction="#handleClearSearch" styleClass="secondary"/>
+        </HBox>
+
+        <TableView fx:id="ownerTable" VBox.vgrow="ALWAYS" onMouseClicked="#handleTableClick">
+            <columns>
+                <TableColumn fx:id="firstNameColumn" text="First Name"/>
+                <TableColumn fx:id="lastNameColumn" text="Last Name"/>
+                <TableColumn fx:id="addressColumn" text="Address"/>
+                <TableColumn fx:id="phoneColumn" text="Phone"/>
+                <TableColumn fx:id="emailColumn" text="Email"/>
+            </columns>
+        </TableView>
+    </VBox>
+</VBox> 
